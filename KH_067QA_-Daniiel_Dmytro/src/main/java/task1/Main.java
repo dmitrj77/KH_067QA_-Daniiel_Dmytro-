@@ -11,12 +11,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
-        Scanner scanner = new Scanner(System.in);
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -62,9 +59,6 @@ public class Main {
         String searchDeleteButtonXpath = "//button[@class='button button--medium button--with-icon button--link context-menu-actions__button']";
         WebElement searchDeleteButton = driver.findElement(By.xpath(searchDeleteButtonXpath));
         searchDeleteButton.click();
-
-        scanner.next();
-
 
         driver.close();
 
