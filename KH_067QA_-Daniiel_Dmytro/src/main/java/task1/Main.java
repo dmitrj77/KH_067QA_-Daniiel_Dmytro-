@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-       // System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+       System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://www.google.com/");
@@ -24,9 +24,9 @@ public class Main {
         inputLink.sendKeys("rozetka.com.ua" + Keys.ENTER);
 
         //Search input field to find product
-        String searchLinkXpath = "//h3[@class='LC20lb MBeuO DKV0Md']";
-        List<WebElement> clickLink = driver.findElements(By.xpath(searchLinkXpath));
-        clickLink.get(0).click();
+        String searchLinkXpath = "(//h3[@class='LC20lb MBeuO DKV0Md'])[1]";
+        WebElement clickLink = driver.findElement(By.xpath(searchLinkXpath));
+        clickLink.click();
 
         //Input product name
         String searchInputProductXpath = "//input[@name='search']";
@@ -34,10 +34,10 @@ public class Main {
         searchProduct.sendKeys("Apple iPhone 11" + Keys.ENTER);
 
         //Choice first founded product
-        String searchProductXpath = "//a[@class='goods-tile__picture ng-star-inserted']";
+        String searchProductXpath = "(//a[@class='goods-tile__picture ng-star-inserted'])[1]";
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-        List<WebElement> products = driver.findElements(By.xpath(searchProductXpath));
-        products.get(0).click();
+        WebElement products = driver.findElement(By.xpath(searchProductXpath));
+        products.click();
 
         //Click to non-clickable place
         String emptyClickXpath = "//span[@class='product__code-accent']";
