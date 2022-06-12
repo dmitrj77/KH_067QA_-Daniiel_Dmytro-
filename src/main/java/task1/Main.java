@@ -13,7 +13,7 @@ import java.time.Duration;
 
 public class Main {
     public static void main(String[] args) {
-        //System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://www.google.com/");
@@ -44,20 +44,10 @@ public class Main {
         searchEmptyClick.click();
 
         //Add product to cart
-        //String searchBuyButtonXpath = "//button[@class='buy-button button button--with-icon button--green button--medium ng-star-inserted']";
         String searchBuyButtonXpath = "//span[contains(text(),'Купить')]";
         WebElement searchBuyButton = new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.elementToBeClickable(By.xpath(searchBuyButtonXpath)));
         searchBuyButton.click();
-
-        //Delete added product from cart
-        String searchDotCartMenuXpath = "//button[@id='cartProductActions0']";
-        WebElement searchDotCarMenu = driver.findElement(By.xpath(searchDotCartMenuXpath));
-        searchDotCarMenu.click();
-
-        String searchDeleteButtonXpath = "//button[@class='button button--medium button--with-icon button--link context-menu-actions__button']";
-        WebElement searchDeleteButton = driver.findElement(By.xpath(searchDeleteButtonXpath));
-        searchDeleteButton.click();
 
         driver.close();
 
