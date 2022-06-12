@@ -44,7 +44,6 @@ public class Main {
         searchEmptyClick.click();
 
         //Add product to cart
-        //String searchBuyButtonXpath = "//button[@class='buy-button button button--with-icon button--green button--medium ng-star-inserted']";
         String searchBuyButtonXpath = "//span[contains(text(),'Купить')]";
         WebElement searchBuyButton = new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.elementToBeClickable(By.xpath(searchBuyButtonXpath)));
