@@ -9,11 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-import static task2.Main.getDeleteProduct;
-
 public class Script1 {
     public static void getBuyOneProduct() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+       // System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         Actions actions = new Actions(driver);
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -39,7 +37,7 @@ public class Script1 {
         //Choice a category of catalog
         String searchProductXpath = "//a[contains(@href, 'monitors')]";
         js.executeScript("scroll(0, 250);");
-        WebElement searchProduct = new WebDriverWait(driver,Duration.ofSeconds(3))
+        WebElement searchProduct = new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.elementToBeClickable(By.xpath(searchProductXpath)));
         searchProduct.click();
 
@@ -54,13 +52,10 @@ public class Script1 {
 
         //Add a product to cart
         actions.moveByOffset(250, 250).build().perform();
-        //String searchBuyButtonXpath = "//button[@class='buy-button button button--with-icon button--green button--medium ng-star-inserted']";
-        String searchBuyButtonXpath = "//span[contains(text(),'Купить')]";
-        WebElement searchBuyButton=new WebDriverWait(driver,Duration.ofSeconds(3))
+        String searchBuyButtonXpath = "//span[contains(@class,'buy-button')]";
+        WebElement searchBuyButton = new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.elementToBeClickable(By.xpath(searchBuyButtonXpath)));
         searchBuyButton.click();
-
-        getDeleteProduct(driver);
 
         driver.close();
 

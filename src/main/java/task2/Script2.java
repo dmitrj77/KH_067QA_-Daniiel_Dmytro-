@@ -9,12 +9,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-import static task2.Main.getDeleteProduct;
-
 
 public class Script2 {
     public static void getBuyTwoProducts() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+       // System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         Actions actions = new Actions(driver);
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -46,7 +44,7 @@ public class Script2 {
 
         //Choice a producer of product
         String searchCheckBoxXpath = "//a[@data-id='Rozetka']";
-       driver.findElement(By.xpath(searchCheckBoxXpath)).click();
+        driver.findElement(By.xpath(searchCheckBoxXpath)).click();
 
         //Choice first product
         String searchFirstProductXpath = "//span[@class='goods-tile__title']";
@@ -55,7 +53,6 @@ public class Script2 {
 
         //Add first product to cart
         actions.moveByOffset(250, 250).build().perform();
-        //String searchBuyButtonXpath = "//button[@class='buy-button button button--with-icon button--green button--medium ng-star-inserted']";
         String searchBuyButtonXpath = "//span[contains(@class,'buy-button')]";
         driver.findElement(By.xpath(searchBuyButtonXpath)).click();
 
@@ -80,8 +77,6 @@ public class Script2 {
         actions.moveByOffset(250, 250).build().perform();
         driver.findElement(By.xpath(searchBuyButtonXpath)).click();
 
-        getDeleteProduct(driver);
-        getDeleteProduct(driver);
         driver.close();
 
     }
