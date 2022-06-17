@@ -1,6 +1,9 @@
 package task2;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,14 +14,13 @@ import java.util.List;
 
 public class Script2 {
     public static void getBuyTwoProducts() {
-        // System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         Actions actions = new Actions(driver);
-        JavascriptExecutor js = (JavascriptExecutor) driver;
         driver.manage().window().maximize();
         driver.get("https://www.google.com/");
 
-        //Search input field and input a link
+        //Searching input field and input a link
         String searchInputGoogleXpath = "//input[@name='q']";
         WebElement inputLink = new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.elementToBeClickable(By.xpath(searchInputGoogleXpath)));
@@ -29,31 +31,35 @@ public class Script2 {
         List<WebElement> clickLink = driver.findElements(By.xpath(searchLinkXpath));
         clickLink.get(0).click();
 
-        //Search a menu of categories
+        //Searching a menu of categories
         String searchMenuCategoriesXpath = "//a[@class='menu-categories__link']";
         List<WebElement> searchMenuCategories = driver.findElements(By.xpath(searchMenuCategoriesXpath));
         searchMenuCategories.get(0).click();
 
-        //Choice first category of catalog
-        String searchCategory1tXpath = "//a[contains(@href, 'monitors')]";
-        js.executeScript("scroll(0, 250);");
+        //Choice a category of catalog
+        String searchCategoryXpath = "//a[contains(@href, 'monitors')]";
         WebElement searchProduct = new WebDriverWait(driver, Duration.ofSeconds(3))
-                .until(ExpectedConditions.elementToBeClickable(By.xpath(searchCategory1tXpath)));
+                .until(ExpectedConditions.elementToBeClickable(By.xpath(searchCategoryXpath)));
+        actions.moveToElement(searchProduct).build().perform();
         searchProduct.click();
 
-        //Choice a producer of product
-        String searchCheckBoxXpath = "//a[@data-id='Rozetka']";
-        driver.findElement(By.xpath(searchCheckBoxXpath)).click();
+        //Choice a seller
+        By sellerFilterBy = By.xpath("//div[@data-filter-name='seller']");
+        WebElement sellerFilter = driver.findElement(sellerFilterBy);
+        List<WebElement> elements = sellerFilter.findElements(By.cssSelector(".checkbox-filter__link"));
+        elements.get(0).click();
 
         //Choice first product
         String searchFirstProductXpath = "//span[@class='goods-tile__title']";
         List<WebElement> searchFirstProduct = driver.findElements(By.xpath(searchFirstProductXpath));
         searchFirstProduct.get(0).click();
 
-        //Add first product to cart
-        actions.moveByOffset(250, 250).build().perform();
+        //Adding a product to cart
         String searchBuyButtonXpath = "//span[contains(@class,'buy-button')]";
-        driver.findElement(By.xpath(searchBuyButtonXpath)).click();
+        WebElement searchBuyButton = new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.elementToBeClickable(By.xpath(searchBuyButtonXpath)));
+        actions.moveToElement(searchBuyButton).build().perform();
+        searchBuyButton.click();
 
         driver.navigate().back();
         driver.navigate().back();
@@ -61,9 +67,9 @@ public class Script2 {
 
         //Choice second category of catalog
         String searchCategory2Xpath = "//a[contains(@href, 'mouses')]";
-        js.executeScript("scroll(0, 450);");
         WebElement searchCategory2 = new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.elementToBeClickable(By.xpath(searchCategory2Xpath)));
+        actions.moveToElement(searchCategory2).build().perform();
         searchCategory2.click();
 
         //Choice second product of category
@@ -73,8 +79,10 @@ public class Script2 {
         searchProduct2.get(0).click();
 
         //Add second product to cart
-        actions.moveByOffset(250, 250).build().perform();
-        driver.findElement(By.xpath(searchBuyButtonXpath)).click();
+        searchBuyButton = new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.elementToBeClickable(By.xpath(searchBuyButtonXpath)));
+        actions.moveToElement(searchBuyButton).build().perform();
+        searchBuyButton.click();
 
         driver.close();
 
