@@ -1,14 +1,14 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
 <suite name="Suite1" verbose="1" >
-    <test name="NonRegisterUser1">
+    <test name="NonRegisterUser">
         <classes>
-            <class name="TestSuit1.NonRegisterUser"></class>
+            <class name="TestSuit1.AddProductIntoCart"></class>
         </classes>
     </test>
-    <test name="RegisterUser1">
+    <test name="RegisterUser">
         <classes>
-            <class name="TestSuit1.RegisterUser"></class>
+            <class name="TestSuit1.DeleteProductFromCart"></class>
         </classes>
     </test>
 </suite>
