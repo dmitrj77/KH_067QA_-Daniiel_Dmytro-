@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Suite1" verbose="1">
+    <test name="deleteProduct">
+        <groups>
+            <run>
+                <include name="deleteProduct.*"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="TestSuit2.DeleteProductsFromBag"/>
+        </classes>
+    </test>
+</suite>
