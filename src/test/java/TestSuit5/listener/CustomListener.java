@@ -1,12 +1,13 @@
 package TestSuit5.listener;
 
+import TestSuit5.BasePage;
 import TestSuit5.BaseTest;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import task5.BasePage;
+
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
