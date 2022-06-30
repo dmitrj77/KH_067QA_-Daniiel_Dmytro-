@@ -12,6 +12,8 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <selenium.version>4.1.4</selenium.version>
+        <testng.version>7.3.0</testng.version>
+        <webdrivermanager>5.2.1</webdrivermanager>
     </properties>
     <dependencies>
         <dependency>
@@ -23,6 +25,17 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
